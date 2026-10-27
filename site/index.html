@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Página personal de Daniel Campos García, estudiante de Desarrollo de Aplicaciones Web: sobre mí, formación, habilidades y contacto.">
+  <title>Daniel Campos García — Página personal</title>
+  <link rel="icon" href="img/avatar.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="cabecera__identidad contenedor">
+      <img class="cabecera__avatar" src="img/avatar.svg" alt="Avatar ilustrado de Daniel Campos García" width="96" height="96">
+      <div class="cabecera__textos">
+        <h1 class="cabecera__nombre">Daniel Campos García</h1>
+        <p class="cabecera__titular">Estudiante de DAW · Desarrollo web accesible</p>
+      </div>
+    </div>
+    <nav class="menu" aria-label="Navegación principal">
+      <ul class="menu__lista contenedor">
+        <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+        <li><a href="index.html#formacion">Formación</a></li>
+        <li><a href="index.html#habilidades">Habilidades</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido" class="contenedor">
+    <section id="sobre-mi" class="seccion">
+      <h2>Sobre mí</h2>
+      <p>Soy Daniel Campos García, estudiante del Ciclo Superior de Desarrollo de Aplicaciones Web en el IES Ramón Arcas Meca. Durante el curso estoy aprendiendo PHP, CSS, JavaScript, Git y despliegue con GitHub Actions. Mi objetivo es hacer prácticas en una empresa de desarrollo web y seguir creciendo como programador.</p>
+    </section>
+
+    <section id="formacion" class="seccion">
+      <h2>Formación</h2>
+      <ul class="formacion">
+        <li class="tarjeta formacion__entrada">
+          <span class="formacion__anios">2025 – actualidad</span>
+          <strong class="formacion__estudios">Desarrollo de Aplicaciones Web</strong>
+          <span class="formacion__centro">IES Ramón Arcas Meca</span>
+        </li>
+        <li class="tarjeta formacion__entrada">
+          <span class="formacion__anios">2021 – 2022</span>
+          <strong class="formacion__estudios">Instalaciones Eléctricas y Automáticas</strong>
+          <span class="formacion__centro">IES San Juan Bosco</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="habilidades" class="seccion">
+      <h2>Habilidades</h2>
+      <ul class="habilidades">
+        <li>JavaScript</li>
+        <li>Git</li>
+        <li>GitHub</li>
+        <li>PHP</li>
+        <li>XML</li>
+        <li>SQL</li>
+      </ul>
+    </section>
+
+    <section id="contacto" class="seccion">
+      <h2>Contacto</h2>
+      <p>¿Quieres hablar conmigo sobre prácticas o algún proyecto? Escríbeme o echa un vistazo a mis repositorios.</p>
+      <p class="contacto__enlaces">
+        <a class="boton" href="mailto:centro@iesramonarcas.es">centro@iesramonarcas.es</a>
+        <a class="boton boton--secundario" href="https://github.com/SrDanny22" target="_blank" rel="noopener noreferrer">GitHub: SrDanny22</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="pie__contenido contenedor">
+      <p>© <span id="anio">2026</span> Daniel Campos García</p>
+      <button type="button" class="boton" id="volver-arriba">Volver arriba</button>
+    </div>
+  </footer>
+</body>
+</html>

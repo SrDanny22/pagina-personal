@@ -1,0 +1,91 @@
+# Nombre del workflow tal y como aparece en la pestaña Actions
+name: Tests y despliegue en GitHub Pages
+
+# Eventos que lanzan el workflow
+on:
+  # Cada push a la rama principal: se prueba y, si todo pasa, se publica
+  push:
+    branches: [main]
+  # Cada pull request hacia main: solo se prueba, nunca se publica
+  pull_request:
+    branches: [main]
+  # Ejecución manual desde la pestaña Actions
+  workflow_dispatch:
+
+# Permisos por defecto del GITHUB_TOKEN: solo lectura del repositorio
+# (mínimo privilegio; el job de despliegue amplía los suyos)
+permissions:
+  contents: read
+
+# Evita dos despliegues simultáneos de la misma rama.
+# cancel-in-progress: false deja terminar el que ya está en marcha.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ---------------------------------------------------------------
+  # Job 1: valida el HTML y ejecuta los tests de Node.js
+  # ---------------------------------------------------------------
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      # Descarga el código del repositorio en la máquina virtual
+      - name: Descargar el código
+        uses: actions/checkout@v7
+
+      # Instala Node.js 22 y guarda en caché las descargas de npm
+      - name: Configurar Node.js 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      # Instala exactamente las versiones de package-lock.json
+      - name: Instalar dependencias
+        run: npm ci
+
+      # html-validate + node --test (si algo falla, el job falla)
+      - name: Ejecutar los tests
+        run: npm test
+
+  # ---------------------------------------------------------------
+  # Job 2: publica la carpeta site/ en GitHub Pages
+  # ---------------------------------------------------------------
+  despliegue:
+    # Solo empieza si el job tests ha terminado bien
+    needs: tests
+    # Nunca en pull requests: solo con push o ejecución manual en main
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    # Permisos extra solo para este job
+    permissions:
+      contents: read   # leer el repositorio (checkout)
+      pages: write     # publicar en GitHub Pages
+      id-token: write  # pedir el token OIDC que valida el despliegue
+
+    # Entorno de GitHub Pages; la URL aparece en el resumen de la ejecución
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+
+    steps:
+      # Descarga el código del repositorio
+      - name: Descargar el código
+        uses: actions/checkout@v7
+
+      # Prepara la configuración de GitHub Pages del repositorio
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v6
+
+      # Empaqueta SOLO la carpeta site/ como artefacto de Pages
+      - name: Subir la carpeta site/
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+      # Publica el artefacto y devuelve la URL de la web
+      - name: Desplegar en GitHub Pages
+        id: despliegue
+        uses: actions/deploy-pages@v5

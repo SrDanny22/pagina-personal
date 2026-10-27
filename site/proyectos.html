@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Proyectos de Daniel Campos García, estudiante de Desarrollo de Aplicaciones Web: repositorios, tecnologías y enlaces.">
+  <title>Proyectos — Daniel Campos García</title>
+  <link rel="icon" href="img/avatar.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="cabecera__identidad contenedor">
+      <img class="cabecera__avatar" src="img/avatar.svg" alt="Avatar ilustrado de Daniel Campos García" width="96" height="96">
+      <div class="cabecera__textos">
+        <h1 class="cabecera__nombre">Daniel Campos García</h1>
+        <p class="cabecera__titular">Estudiante de DAW · Desarrollo web accesible</p>
+      </div>
+    </div>
+    <nav class="menu" aria-label="Navegación principal">
+      <ul class="menu__lista contenedor">
+        <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+        <li><a href="index.html#formacion">Formación</a></li>
+        <li><a href="index.html#habilidades">Habilidades</a></li>
+        <li><a href="proyectos.html" aria-current="page">Proyectos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido" class="contenedor">
+    <p class="intro">Una selección de los proyectos y prácticas que he realizado durante el ciclo. Cada tarjeta enlaza a su repositorio en GitHub.</p>
+
+    <div class="rejilla">
+      <article class="proyecto">
+        <h2>Página personal</h2>
+        <p>Web personal publicada con GitHub Pages y tests automáticos.</p>
+        <ul class="tecnologias">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>GitHub Actions</li>
+        </ul>
+        <a class="boton" href="https://github.com/SrDanny22/pagina-personal" target="_blank" rel="noopener noreferrer">Ver repositorio<span class="visualmente-oculto"> de Página personal (se abre en una pestaña nueva)</span></a>
+      </article>
+
+      <article class="proyecto">
+        <h2>Toma de contacto con CI/CD</h2>
+        <p>Primer pipeline de integración continua con GitHub Actions.</p>
+        <ul class="tecnologias">
+          <li>YAML</li>
+          <li>Node.js</li>
+          <li>GitHub Actions</li>
+        </ul>
+        <a class="boton" href="https://github.com/SrDanny22/practica_cicd" target="_blank" rel="noopener noreferrer">Ver repositorio<span class="visualmente-oculto"> de Toma de contacto con CI/CD (se abre en una pestaña nueva)</span></a>
+      </article>
+
+      <article class="proyecto">
+        <h2>Práctica de Git</h2>
+        <p>Repositorio para practicar ramas, merges y pull requests.</p>
+        <ul class="tecnologias">
+          <li>Git</li>
+          <li>GitHub</li>
+        </ul>
+        <a class="boton" href="https://github.com/SrDanny22/php-words" target="_blank" rel="noopener noreferrer">Ver repositorio<span class="visualmente-oculto"> de Práctica de Git (se abre en una pestaña nueva)</span></a>
+      </article>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="pie__contenido contenedor">
+      <p>© <span id="anio">2026</span> Daniel Campos García</p>
+      <button type="button" class="boton" id="volver-arriba">Volver arriba</button>
+    </div>
+  </footer>
+</body>
+</html>
